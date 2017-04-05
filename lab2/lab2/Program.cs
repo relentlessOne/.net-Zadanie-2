@@ -16,6 +16,7 @@ namespace lab2
             Console.WriteLine("Inital state: ");
             Console.WriteLine("---------------");
             arr.display();
+            Console.WriteLine("Default value: -1");
             Console.WriteLine("---------------");
 
 

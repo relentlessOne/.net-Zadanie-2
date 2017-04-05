@@ -42,12 +42,11 @@ namespace lab2
 
                     if (i > size-1)
                     {
-                        Console.WriteLine("x");
+                       
                         throw new IndexOutOfRangeException();
                     }
                     else
                     {
-                        Console.WriteLine(size);
                         arr[i] = value;
                     }
 
@@ -55,21 +54,38 @@ namespace lab2
                 } catch (Exception)
                 {
 
-                    Console.WriteLine(arr.Length + "l");
-                    if(arr.Length < i)
-                    {
 
-                        Console.WriteLine("xx");
-                        Array.Resize(ref arr, arr.Length);
+
+                    bool stopMemoryReserving = false;
+
+
+                    while (!stopMemoryReserving)
+                    {
+                        Array.Resize(ref arr, arr.Length * 2);
+
+                        if (arr.Length > i)
+                            stopMemoryReserving = true;
                     }
 
 
-                    for (int j = size; j <= i-1 ; j++)
+                    //Console.WriteLine("size " + size);
+
+                    //Console.WriteLine("arr.lenght " + arr.Length);
+
+                    //Console.WriteLine("i " + i);
+
+
+                    if (size < i)
                     {
-                        arr[j] = -1;
-                        size++;
+                        for (int j = size ; j < i ; j++)
+                        {
+                            arr[j] = -1;
+                            size++;
+                        }
                     }
+
                     arr[i] = value;
+                    size++;
                 }
        
             }
